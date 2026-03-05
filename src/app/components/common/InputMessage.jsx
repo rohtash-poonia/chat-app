@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { SendIcon, UploadFileIcon } from "./Icons";
 import Image from "next/image";
 
-const InputMessage = ({chatPerson}) => {
+const InputMessage = ({ chatPerson, }) => {
   const [form, setForm] = useState({
     details: "",
   });
@@ -13,30 +13,42 @@ const InputMessage = ({chatPerson}) => {
     const text = form.details.trim();
     if (text) {
       setData((prev) => [...prev, { details: text }]);
-      setForm({ details:""});
+      setForm({ details: "" });
     } else {
       alert("description is empty");
     }
   };
   const messageEndRef = useRef(null);
   useEffect(() => {
-     messageEndRef.current?.scrollIntoView ({behavior:"smooth"})
-  }, [data])
+    messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [data]);
 
   useEffect(() => {
-    setData([])
-  }, [chatPerson])
-  
+    const key = `chatData_${chatPerson?.title || "default"}`;
+    const stored = localStorage.getItem(key);
+    if (stored) {
+      setData(JSON.parse(stored));
+    } else {
+      setData([]);
+    }
+  }, [chatPerson]);
+
+  useEffect(() => {
+    const key = `chatData_${chatPerson?.title || "default"}`;
+    localStorage.setItem(key, JSON.stringify(data));
+  }, [data, chatPerson]);
+
   return (
     <div>
-      <div className="h-[calc(100vh-180px)] overflow-auto">
+      <div className="h-[calc(100vh-180px)]  overflow-auto">
         {data.length > 0 ? (
           <div className="p-6">
+          
             {data.map((item, index) => (
               <div key={index} className="mb-2">
                 <div className="flex justify-end items-start gap-2">
                   <p className="w-fit rounded-lg text-right p-2 bg-blue-100">
-                    {item.details}                                                                                            
+                    {item.details}
                   </p>
                   <Image
                     src={chatPerson?.image || "/images/Florencio.png"}
@@ -68,7 +80,7 @@ const InputMessage = ({chatPerson}) => {
       </div>
 
       <form onSubmit={handleSubmit} className="w-full p-6">
-        <div className="flex gap-6 relative items-center">
+        <div className="flex gap-6 relative  max-sm:pb-12! items-center">
           <label htmlFor="file" className="cursor-pointer">
             <UploadFileIcon />
           </label>
@@ -89,7 +101,8 @@ const InputMessage = ({chatPerson}) => {
               form.details.length === 0
                 ? " cursor-not-allowed contrast-0"
                 : "cursor-pointer"
-             }  `}>
+            }  `}
+          >
             <SendIcon />
           </button>
         </div>

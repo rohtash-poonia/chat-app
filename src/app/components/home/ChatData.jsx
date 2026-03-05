@@ -6,13 +6,33 @@ import InputMessage from "../common/InputMessage";
 
 const ChatData = () => {
   const [chatPerson, setChatPerson] = useState(null);
+
   return (
-    <div className="flex w-full">
-      <MessageList setChatPerson={setChatPerson} />
-      <div className="flex flex-col justify-between h-screen w-full  shadow-[1px_0px_0px_0px_rgba(0,0,0,0.08)]">
-        <ChatMember chatPerson={chatPerson} />
-        <InputMessage chatPerson={chatPerson} />
+    <div className="flex w-full h-screen">
+      {/* MESSAGE LIST */}
+      <div
+        className={`w-full md:w-87.5 ${
+          chatPerson ? "hidden md:block" : "block"
+        }`}
+      >
+        <MessageList setChatPerson={setChatPerson} />
       </div>
+
+      {/* CHAT SECTION */}
+      {chatPerson && (
+        <div className="flex flex-col w-full h-screen">
+          {/* CHAT HEADER */}
+          <ChatMember chatPerson={chatPerson} setchatPerson={setChatPerson} />
+
+          {/* CHAT BODY */}
+          <div className="flex-1">
+            <InputMessage
+              chatPerson={chatPerson}
+              setchatPerson={setChatPerson}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

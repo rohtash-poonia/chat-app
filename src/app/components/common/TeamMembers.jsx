@@ -11,7 +11,7 @@ import { DocumentsData, MembersData } from "./Helper";
 
 const TeamMembers = () => {
   return (
-    <div className="max-w-90.5 w-full h-screen  shadow-[1px_0px_0px_0px_rgba(0,0,0,0.08)] ">
+    <div className="min-w-90.5 w-full h-screen  shadow-[1px_0px_0px_0px_rgba(0,0,0,0.08)] ">
       <div className="flex justify-between border-b-2 border-[#F3F3F3] p-7">
         <h2 className="text-[20px] font-inter font-semibold leading-[150%]">
           Directory
@@ -26,9 +26,9 @@ const TeamMembers = () => {
             <h3 className="font-inter text-[14px] font-semibold leading-[150%]">
               Team Members
             </h3>
-            <span>
-              <MembersIcon />
-            </span>
+            <p className="text-[12px] flex justify-center items-center font-semibold font-inter bg-[#EDF2F7] rounded-lg px-2 py-0.5 ">
+              {MembersData.length}
+            </p>
           </div>
 
           <div className="max-w-82.5 w-full p-3 px-4 border-b-2 border-[#F3F3F3] ">

@@ -3,11 +3,17 @@ import React from "react";
 import { CallIcon } from "./Icons";
 import Link from "next/link";
 
-const ChatMember = ({chatPerson}) => {
+const ChatMember = ({ chatPerson, setchatPerson }) => {
   return (
-    <div className="w-full py-4.5 px-6 ">
+    <div className="w-full  py-4.5 px-6 ">
       <div className=" flex justify-between items-center ">
         <div className="flex gap-4">
+          <button
+            onClick={() => setchatPerson(null)}
+            className="md:hidden text-xl px-4"
+          >
+            ← 
+          </button>
           <Image
             className="rounded-[10px] h-10 w-10"
             src={chatPerson?.image || "/images/Florencio.png"}
