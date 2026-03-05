@@ -79,7 +79,7 @@ const MessageList = ({ setChatPerson, selected }) => {
                   width="48"
                 />
 
-                <div className="max-w-57.25 w-full   flex justify-between">
+                <div className="min-w-57.25 w-full  flex justify-between">
                   <div>
                     <h3 className="text-[14px] font-semibold leading-[150%] font-inter">
                       {object.title}
@@ -109,7 +109,7 @@ const MessageList = ({ setChatPerson, selected }) => {
                       ))}
                     </div>
                   </div>
-                  <p className="text-[rgba(0,0,0,0.4)]">{object.active}</p>
+                  <p className="text-[rgba(0,0,0,0.4)] max-sm:pr-6">{object.active}</p>
                 </div>
               </div>
             </div>

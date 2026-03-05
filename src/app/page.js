@@ -7,14 +7,14 @@ import MainLayout from "./components/home/MainLayout";
 
 import Practice from "./components/home/PracticeGrid";
 import Table from "./components/home/Table";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { users } from "./components/common/Helper";
 
 export default function Home() {
   const [showMembersOnSmall, setShowMembersOnSmall] = useState(false);
 
   // move chatPerson state here so sidebar and ChatData can coordinate
-  const [chatPerson, setChatPerson] = useState(users[0] || null);
+  const [chatPerson, setChatPerson] = useState(null);
 
   const handleHomeClick = () => {
     setShowMembersOnSmall(!showMembersOnSmall);
@@ -24,7 +24,15 @@ export default function Home() {
     // collapse an open chat on small screens
     setChatPerson(null);
   };
-
+useEffect(() => {
+  const handleResize = () => {
+    if (window.innerWidth < 768) {
+      setChatPerson(null);
+    }
+  };
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
   return (
     <>
       {/* <MainLayout />  */}
