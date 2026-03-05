@@ -6,7 +6,7 @@ import InputMessage from "../common/InputMessage";
 
 const ChatData = ({ chatPerson, setChatPerson }) => {
   return (
-    <div className="flex w-full h-screen">
+    <div className="flex  w-full h-screen">
       {/* MESSAGE LIST */}
       <div
         className={`w-full md:w-87.5 ${

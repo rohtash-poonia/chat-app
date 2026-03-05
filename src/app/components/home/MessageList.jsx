@@ -24,7 +24,7 @@ const MessageList = ({ setChatPerson, selected }) => {
       <div className=" w-full  border-b-2 max-md:p-3 max-sm:p-2 border-[#F3F3F3] flex justify-between items-center py-7 px-6">
         <div className="flex justify-center items-center gap-2.5">
           <div className="flex justify-center gap-1.5 items-center">
-            <h2 className="text-[20px] font-inter font-semibold leading-[150%]">
+            <h2 className="text-[20px] max-sm:text-base font-inter font-semibold leading-[150%]">
               Messages
             </h2>
           </div>

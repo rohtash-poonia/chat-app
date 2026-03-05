@@ -44,8 +44,7 @@ export default function Home() {
 
           {/* Team Members */}
           <div
-            className={`max-xl:block ${showMembersOnSmall ? "block" : "max-sm:hidden"}`}
-          >
+           className={`hidden xl:block ${showMembersOnSmall ? "block xl:block" : ""}`}>
             <TeamMembers />
           </div>
         </div>
