@@ -9,7 +9,7 @@ import {
   StatusIcon,
 } from "../common/Icons";
 
-const Sidebar = () => {
+const Sidebar = ({ onHomeClick, onMessageClick }) => {
   return (
     <div>
       <div
@@ -33,10 +33,10 @@ const Sidebar = () => {
               />
             </div>
             <div className="flex sm:flex-col gap-8 justify-center items-center">
-              <div className="cursor-pointer ">
+              <div className="cursor-pointer" onClick={onHomeClick}>
                 <HomeIcon />
               </div>
-              <div className="cursor-pointer">
+              <div className="cursor-pointer" onClick={onMessageClick}>
                 <MessageIcon />
               </div>
               <div className="cursor-pointer">

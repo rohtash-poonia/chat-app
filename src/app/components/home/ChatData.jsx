@@ -4,9 +4,7 @@ import MessageList from "./MessageList";
 import ChatMember from "../common/ChatMember";
 import InputMessage from "../common/InputMessage";
 
-const ChatData = () => {
-  const [chatPerson, setChatPerson] = useState(null);
-
+const ChatData = ({ chatPerson, setChatPerson }) => {
   return (
     <div className="flex w-full h-screen">
       {/* MESSAGE LIST */}
@@ -15,14 +13,14 @@ const ChatData = () => {
           chatPerson ? "hidden md:block" : "block"
         }`}
       >
-        <MessageList setChatPerson={setChatPerson} />
+        <MessageList setChatPerson={setChatPerson} selected={chatPerson} />
       </div>
 
       {/* CHAT SECTION */}
       {chatPerson && (
         <div className="flex flex-col w-full h-screen">
           {/* CHAT HEADER */}
-          <ChatMember chatPerson={chatPerson} setchatPerson={setChatPerson} />
+          <ChatMember chatPerson={chatPerson} setChatPerson={setChatPerson} />
 
           {/* CHAT BODY */}
           <div className="flex-1">

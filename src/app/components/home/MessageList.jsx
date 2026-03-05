@@ -4,7 +4,7 @@ import { AddNewChat, DropdownIcon, MessageNotify } from "../common/Icons";
 import Image from "next/image";
 import { users } from "../common/Helper";
 
-const MessageList = ({ setChatPerson }) => {
+const MessageList = ({ setChatPerson, selected }) => {
   const [search, setSearch] = useState("");
   const [allUser, setAllUser] = useState(users);
 
@@ -64,7 +64,11 @@ const MessageList = ({ setChatPerson }) => {
             <div
               onClick={() => setChatPerson(object)}
               key={outerIndex}
-              className="max-w-79.25 w-full p-3 border border-transparent hover:bg-[rgba(97,94,240,0.06)]  hover:border-black hover:rounded-xl hover:shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]"
+              className={`w-full p-3 border border-transparent hover:bg-[rgba(97,94,240,0.06)] hover:border-black hover:rounded-xl hover:shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] ${
+                selected?.title === object.title
+                  ? "bg-[rgba(97,94,240,0.1)]"
+                  : ""
+              }`}
             >
               <div className="flex gap-4">
                 <Image
