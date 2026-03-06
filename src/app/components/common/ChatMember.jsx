@@ -10,7 +10,7 @@ const ChatMember = ({ chatPerson, setChatPerson }) => {
         <div className="flex gap-4">
           <button
             onClick={() => setChatPerson(null)}
-            className="md:hidden text-xl px-4"
+            className="md:hidden text-4xl text-blue-700 font-fold  px-4"
           >
             ←
           </button>
