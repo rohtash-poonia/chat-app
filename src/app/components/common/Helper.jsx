@@ -25,7 +25,7 @@ export const users = [
     button: ["Bug", "Hacktoberfest"],
   },
   {
-    image: "/images/Titus.png",
+    image: "/images/TitusKitamura.png",
     title: "Titus Kitamura",
     subtitle: "omg, this is amazing",
     active: "24m",
